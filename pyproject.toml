@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evidenceai"
+version = "1.0.0"
+description = "Permission-aware hybrid RAG with reranking, citations, and systematic evaluation."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+api = ["fastapi>=0.115", "uvicorn>=0.32", "pydantic>=2.9"]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.8"]
+
+[project.scripts]
+evidenceai = "evidenceai.cli:main"
+evidenceai-eval = "evidenceai.evaluation:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --cov=evidenceai --cov-report=term-missing --cov-fail-under=80"
+
+[tool.coverage.run]
+omit = ["src/evidenceai/api.py", "src/evidenceai/cli.py"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

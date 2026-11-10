@@ -1,0 +1,7 @@
+{
+  "retrieval_recall_at_3": 1.0,
+  "faithfulness": 1.0,
+  "citation_accuracy": 1.0,
+  "mean_latency_ms": 0.111,
+  "mean_estimated_cost_usd": 5.5e-05
+}
